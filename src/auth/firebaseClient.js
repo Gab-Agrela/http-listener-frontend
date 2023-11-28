@@ -14,8 +14,11 @@ export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const provider = new GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
-provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+const provider = new GoogleAuthProvider();
 provider.addScope("https://www.googleapis.com/auth/spreadsheets");
 provider.addScope("https://www.googleapis.com/auth/drive");
+provider.setCustomParameters({
+  prompt: "consent",
+});
+
+export { provider };
