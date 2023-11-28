@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Spin } from "../../Commom/Components/Spin";
 import { useGetSpreadSheetsQuery } from "../../Modules/rtk/query";
-import { SelectForm } from "./Components/SelectForm";
+import { SelectForm } from "./Components/Form";
 
 const Automate = () => {
   const { info, token } = JSON.parse(localStorage.getItem("auth") || "{}");
