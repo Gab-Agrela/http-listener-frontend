@@ -32,8 +32,22 @@ const api = createApi({
         },
       }),
     }),
+    updateSheet: builder.query({
+      query: ({ auth, spreadSheetsId, sheetName, values }) => ({
+        url: "/sheets",
+        method: "PUT",
+        headers: {
+          authorization: auth,
+        },
+        body: {
+          spreadSheetsId,
+          sheetName,
+          values
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetSpreadSheetsQuery, useGetSheetsQuery } = api;
+export const { useGetSpreadSheetsQuery, useGetSheetsQuery, useUpdateSheetQuery } = api;
 export default api;

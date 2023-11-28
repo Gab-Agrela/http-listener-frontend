@@ -1,19 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
-import { Spin } from "../../Commom/Components/Spin";
+import { Form } from "./Components/Form";
 import { useGetSpreadSheetsQuery } from "../../Modules/rtk/query";
-import { SelectForm } from "./Components/Form";
+
 
 const Automate = () => {
-  const { info, token } = JSON.parse(localStorage.getItem("auth") || "{}");
-  const { isLoading, data } = useGetSpreadSheetsQuery({
-    auth: token,
-    email: info.email,
-  });
   return (
     <FormContainer>
-      {isLoading ? <Spin /> : <SelectForm data={data} />}
+      <h1>Automate Page</h1>
+      <Form />
     </FormContainer>
   );
 };

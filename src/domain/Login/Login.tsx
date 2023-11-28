@@ -11,25 +11,28 @@ import { auth, provider } from "../../auth/firebaseClient";
 import { Spin } from "../../Commom/Components/Spin";
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const signIn = () => {
     signInWithRedirect(auth, provider);
   };
   useEffect(() => {
+    setIsLoading(true)
     getRedirectResult(auth)
       .then((result) => {
         const credential =
           result && GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const userInfo = result?.user;
-        localStorage.setItem(
-          "auth",
-          JSON.stringify({ token: token, info: userInfo })
-        );
+        if(token && userInfo) {
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({ token: token, info: userInfo })
+          );
+          navigate("/automate");
+        }
         setIsLoading(false);
-        navigate("/automate");
       })
       .catch((error) => {
         setIsLoading(false);

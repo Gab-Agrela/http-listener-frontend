@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Login } from "./domain/Login/Login";
 import { Automate } from "./domain/Automate/Automate";
 import store from "./Modules/rtk/store";
+import { Login } from "./domain/Login/Login";
 
 const Root = () => {
   return (
